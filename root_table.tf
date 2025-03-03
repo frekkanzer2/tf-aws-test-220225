@@ -38,15 +38,7 @@ resource "aws_route_table_association" "aws-test-sab-pri-server-1-rt-ass" {
   subnet_id      = aws_subnet.aws-test-sab-pri-server-1.id
   route_table_id = aws_route_table.aws-test-sab-pri-rt.id
 }
-resource "aws_route_table_association" "aws-test-sab-pri-server-2-rt-ass" {
-  subnet_id      = aws_subnet.aws-test-sab-pri-server-2.id
-  route_table_id = aws_route_table.aws-test-sab-pri-rt.id
-}
 resource "aws_route_table_association" "aws-test-sab-pri-database-1-rt-ass" {
   subnet_id      = aws_subnet.aws-test-sab-pri-database-1.id
-  route_table_id = aws_route_table.aws-test-sab-pri-rt.id
-}
-resource "aws_route_table_association" "aws-test-sab-pri-database-2-rt-ass" {
-  subnet_id      = aws_subnet.aws-test-sab-pri-database-2.id
   route_table_id = aws_route_table.aws-test-sab-pri-rt.id
 }
