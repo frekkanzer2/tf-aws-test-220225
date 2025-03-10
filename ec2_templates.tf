@@ -1,6 +1,6 @@
 locals {
   common-tags = {
-    Owner                 = "fr.abate@reply.it"
+    Owner                 = var.owner
     DateOfDecommission    = formatdate("YYYY-MM-DD", timeadd(timestamp(), "1209600s"))
     Schedule              = "reply-office-hours-late"
   }
@@ -42,7 +42,7 @@ resource "aws_launch_template" "ec2-template-server" {
   network_interfaces {
     associate_public_ip_address = false
     security_groups             = [aws_security_group.sg_app-server.id]
-    subnet_id                   = aws_subnet.aws_subnet.aws-test-sab-pri-server-1.id
+    subnet_id                   = aws_subnet.aws-test-sab-pri-server-1.id
   }
 
   tag_specifications {
