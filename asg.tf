@@ -14,6 +14,9 @@ resource "aws_autoscaling_group" "asg-app-server" {
   health_check_grace_period  = 300
   wait_for_capacity_timeout   = "5m"
   force_delete               = true
+  target_group_arns = [
+    aws_lb_target_group.app-server-lb-tg.arn
+  ]
 
   tag {
     key                 = "Owner"

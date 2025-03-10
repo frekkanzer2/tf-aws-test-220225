@@ -142,7 +142,7 @@ resource "aws_security_group" "sg_alb-server" {
   }
 
   tags = {
-    Name  = "sg_alb-server"
-    Owner = "fr.abate@reply.it"
+    Name  = "sg_alb-server",
+    Owner = var.owner
   }
 }
