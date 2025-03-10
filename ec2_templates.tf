@@ -2,7 +2,7 @@ locals {
   common-tags = {
     Owner                 = var.owner
     DateOfDecommission    = formatdate("YYYY-MM-DD", timeadd(timestamp(), "1209600s"))
-    Schedule              = "reply-office-hours-late"
+    Schedule              = var.ec2-schedule-type
   }
 }
 
@@ -10,7 +10,7 @@ resource "aws_launch_template" "ec2-template-database" {
   name_prefix   = "ci-database-"
   image_id      = "ami-077e2fabf29e9a90b"
   instance_type = "t3.micro"
-  key_name      = "ic-key"
+  key_name      = var.ec2-access-keys
 
   network_interfaces {
     associate_public_ip_address = false
@@ -37,7 +37,7 @@ resource "aws_launch_template" "ec2-template-server" {
   name_prefix   = "ci-server-"
   image_id      = "ami-077e2fabf29e9a90b"
   instance_type = "t3.micro"
-  key_name      = "ic-key"
+  key_name      = var.ec2-access-keys
 
   network_interfaces {
     associate_public_ip_address = false

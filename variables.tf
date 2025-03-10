@@ -1,4 +1,9 @@
 variable "owner" {
   type = string
-  default = "fr.abate@reply.it"
+}
+variable "ec2-schedule-type" {
+  type = string
+}
+variable "ec2-access-keys" {
+  type = string
 }
