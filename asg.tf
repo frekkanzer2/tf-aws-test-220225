@@ -17,6 +17,7 @@ resource "aws_autoscaling_group" "asg-app-server" {
   target_group_arns = [
     aws_lb_target_group.app-server-lb-tg.arn
   ]
+  depends_on = [aws_instance.database_instance]
 
   tag {
     key                 = "Owner"
