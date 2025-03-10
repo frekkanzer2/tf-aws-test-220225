@@ -7,11 +7,15 @@ sudo yum install docker -y
 sudo systemctl start docker
 sudo systemctl enable docker
 
+ENVIRONMENT="dev"
+DB_USERNAME="cardsisland_web"
+DB_PASSWORD="cardsisland_web"
+
 # Run PostgreSQL container with restart policy
 sudo docker run --name postgres-container \
-  -e POSTGRES_USER=cardsisland_web \
-  -e POSTGRES_PASSWORD=cardsisland_web \
-  -e POSTGRES_DB=database \
+  -e POSTGRES_USER=$DB_USERNAME \
+  -e POSTGRES_PASSWORD=$DB_PASSWORD \
+  -e POSTGRES_DB=ci-database-$ENVIRONMENT \
   -p 5432:5432 \
   -d --restart always postgres
 
