@@ -13,7 +13,7 @@ IMAGE_TAG="latest"
 DB_USERNAME="cardsisland_web"
 DB_PASSWORD="cardsisland_web"
 PORT="80"
-DB_HOST="cidb.lab.cna.stormreply.com"
+DB_HOST="${IP_EC2_DB}"
 
 sudo docker pull $IMAGE_NAME:$IMAGE_TAG
 

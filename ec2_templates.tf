@@ -55,7 +55,9 @@ resource "aws_launch_template" "ec2-template-server" {
     tags          = merge(local.common-tags, { Name = "ci-server" })
   }
 
-  user_data = filebase64("ec2_userdata/ec2_server.bash")
+  user_data = base64encode(templatefile("ec2_userdata/ec2_server.bash.tpl", {
+    IP_EC2_DB = aws_instance.database_instance.private_ip
+  }))
 
   instance_initiated_shutdown_behavior = "terminate"
 }
