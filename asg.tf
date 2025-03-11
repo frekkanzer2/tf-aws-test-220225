@@ -24,4 +24,16 @@ resource "aws_autoscaling_group" "asg-app-server" {
     value               = var.owner
     propagate_at_launch = false
   }
+
+  tag {
+    key                 = "DateOfDecommission"
+    value               = formatdate("YYYY-MM-DD", timeadd(timestamp(), "1209600s"))
+    propagate_at_launch = false
+  }
+
+  tag {
+    key                 = "Schedule"
+    value               = var.ec2-schedule-type
+    propagate_at_launch = false
+  }
 }
