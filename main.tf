@@ -11,5 +11,4 @@ terraform {
 
 provider "aws" {
   region  = "eu-south-1"
-  profile = "StormRomaLabMembers-523753954008"
 }
